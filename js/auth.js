@@ -1,3 +1,4 @@
+"use strict";
 let userStatus = { isLoggedIn: false, userInfo: {} };
 const credentials = [];
 const registration = (userName, password) => {
@@ -11,14 +12,11 @@ const registration = (userName, password) => {
         if (password.length < 6) {
             throw new Error('Password must be at least 6 characters');
         }
-        const userExist = credentials.some(user => user.userName === userName);
+        const userExist = credentials.some((user) => user.userName === userName);
         if (userExist) {
             throw new Error('This username already exists');
         }
-        const regUser = {
-            userName,
-            password
-        };
+        const regUser = { userName, password };
         credentials.push(regUser);
         console.log(`User with nickname "${userName}" was created`);
     }
@@ -31,7 +29,7 @@ const authorization = (userName, password) => {
         if (userStatus.isLoggedIn) {
             throw new Error('You have an active session');
         }
-        const userExist = credentials.some(user => user.userName === userName && user.password === password);
+        const userExist = credentials.some((user) => user.userName === userName && user.password === password);
         if (!userExist) {
             throw new Error('Username or password is incorrect');
         }
@@ -43,23 +41,27 @@ const authorization = (userName, password) => {
     }
 };
 const whoAmI = () => {
-    if (userStatus.isLoggedIn) {
-        console.log(`User "${userStatus.userInfo.userName}" is active`);
+    const { userName } = userStatus.userInfo;
+    if (userStatus.isLoggedIn && userName) {
+        console.log(`User "${userName}" is active`);
     }
-    else
+    else {
         console.log('No active user');
+    }
 };
 const logOut = () => {
-    if (userStatus.isLoggedIn) {
-        userStatus.isLoggedIn = false;
-        console.log(`User "${userStatus.userInfo.userName}" is deactivated`);
+    const { userName } = userStatus.userInfo;
+    if (userStatus.isLoggedIn && userName) {
+        userStatus = { isLoggedIn: false, userInfo: {} };
+        console.log(`User "${userName}" is deactivated`);
     }
-    else
+    else {
         console.log('No active user');
+    }
 };
-export default {
-    registration,
-    authorization,
-    whoAmI,
-    logOut
-};
+registration('12345','123456')
+authorization('12345','123456')
+whoAmI()
+console.log(userStatus)
+logOut()
+console.log(userStatus)

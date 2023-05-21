@@ -11,8 +11,16 @@ let userStatus: ILogged = { isLoggedIn: false, userInfo: {} };
 
 const credentials: IUser[] = [];
 
-const registration = (userName: string, password: string): void => {
+const handleError = (callback: () => void): void => {
     try {
+        callback();
+    } catch (error: any) {
+        console.log(error.message);
+    }
+};
+
+const registration = (userName: string, password: string): void => {
+    handleError(() => {
         if (userStatus.isLoggedIn) {
             throw new Error('You have an active session');
         }
@@ -22,51 +30,55 @@ const registration = (userName: string, password: string): void => {
         if (password.length < 6) {
             throw new Error('Password must be at least 6 characters');
         }
-        const userExist = credentials.some((user) => user.userName === userName);
-        if (userExist) {
+        if (credentials.some((user) => user.userName === userName)) {
             throw new Error('This username already exists');
         }
         const regUser: IUser = { userName, password };
         credentials.push(regUser);
         console.log(`User with nickname "${userName}" was created`);
-    } catch (error: any) {
-    console.log(error.message);
-    }
+    });
 };
 
 const authorization = (userName: string, password: string): void => {
-    try {
+    handleError(() => {
         if (userStatus.isLoggedIn) {
             throw new Error('You have an active session');
-        }
-        const userExist = credentials.some(
-            (user) => user.userName === userName && user.password === password
-        );
-        if (!userExist) {
+    }
+        const isValidCredentials = credentials.some(
+        (user) => user.userName === userName && user.password === password
+    );
+        if (!isValidCredentials) {
             throw new Error('Username or password is incorrect');
         }
         userStatus = { isLoggedIn: true, userInfo: { userName } };
         console.log(`Greeting "${userName}"`);
-    } catch (error: any) {
-        console.log(error.message);
-        }
+    });
 };
 
 const whoAmI = (): void => {
-    const { userName } = userStatus.userInfo;
-    if (userStatus.isLoggedIn && userName) {
-        console.log(`User "${userName}" is active`);
+    handleError(() => {
+    if (userStatus.isLoggedIn) {
+        console.log(`User "${userStatus.userInfo.userName}" is active`);
     } else {
-        console.log('No active user');
+        throw new Error('No active user');
     }
+    });
 };
 
 const logOut = (): void => {
-    const { userName } = userStatus.userInfo;
-    if (userStatus.isLoggedIn && userName) {
-    userStatus = {isLoggedIn:false, userInfo:{}}
-    console.log(`User "${userName}" is deactivated`);
-    } else {
-        console.log('No active user');
-    }
+    handleError(() => {
+        if (userStatus.isLoggedIn) {
+        userStatus = { isLoggedIn: false, userInfo: {} };
+        console.log(`User "${userStatus.userInfo.userName}" is deactivated`);
+        } else {
+            throw new Error('No active user');
+        }
+    });
+};
+
+export const authVar = {
+    registration,
+    logOut,
+    whoAmI,
+    authorization,
 };

@@ -5,7 +5,7 @@ const handleError = (callback) => {
         callback();
     }
     catch (error) {
-        alert(error.message);
+        document.write(error.message);
     }
 };
 const registration = (userName, password) => {
@@ -24,7 +24,7 @@ const registration = (userName, password) => {
         }
         const regUser = { userName, password };
         credentials.push(regUser);
-        alert(`User with nickname "${userName}" was created`);
+        document.write(`User with nickname "${userName}" was created`);
     });
 };
 const authorization = (userName, password) => {
@@ -37,13 +37,13 @@ const authorization = (userName, password) => {
             throw new Error('Username or password is incorrect');
         }
         userStatus = { isLoggedIn: true, userInfo: { userName } };
-        alert(`Greeting "${userName}"`);
+        document.write(`Greeting "${userName}"`);
     });
 };
 const whoAmI = () => {
     handleError(() => {
         if (userStatus.isLoggedIn) {
-            alert(`User "${userStatus.userInfo.userName}" is active`);
+            document.write(`User "${userStatus.userInfo.userName}" is active`);
         }
         else {
             throw new Error('No active user');
@@ -54,16 +54,10 @@ const logOut = () => {
     handleError(() => {
         if (userStatus.isLoggedIn) {
             userStatus = { isLoggedIn: false, userInfo: {} };
-            alert(`User "${userStatus.userInfo.userName}" is deactivated`);
+            document.write(`User "${userStatus.userInfo.userName}" is deactivated`);
         }
         else {
             throw new Error('No active user');
         }
     });
-};
-export const authVar = {
-    registration,
-    logOut,
-    whoAmI,
-    authorization,
 };

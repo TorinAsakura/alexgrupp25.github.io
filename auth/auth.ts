@@ -15,7 +15,7 @@ const handleError = (callback: () => void): void => {
     try {
         callback();
     } catch (error: any) {
-        alert(error.message);
+        document.write(error.message);
     }
 };
 
@@ -35,7 +35,7 @@ const registration = (userName: string, password: string): void => {
         }
         const regUser: IUser = { userName, password };
         credentials.push(regUser);
-        alert(`User with nickname "${userName}" was created`);
+        document.write(`User with nickname "${userName}" was created`);
     });
 };
 
@@ -51,14 +51,14 @@ const authorization = (userName: string, password: string): void => {
             throw new Error('Username or password is incorrect');
         }
         userStatus = { isLoggedIn: true, userInfo: { userName } };
-        alert(`Greeting "${userName}"`);
+        document.write(`Greeting "${userName}"`);
     });
 };
 
 const whoAmI = (): void => {
     handleError(() => {
     if (userStatus.isLoggedIn) {
-        alert(`User "${userStatus.userInfo.userName}" is active`);
+        document.write(`User "${userStatus.userInfo.userName}" is active`);
     } else {
         throw new Error('No active user');
     }
@@ -69,7 +69,7 @@ const logOut = (): void => {
     handleError(() => {
         if (userStatus.isLoggedIn) {
         userStatus = { isLoggedIn: false, userInfo: {} };
-        alert(`User "${userStatus.userInfo.userName}" is deactivated`);
+        document.write(`User "${userStatus.userInfo.userName}" is deactivated`);
         } else {
             throw new Error('No active user');
         }

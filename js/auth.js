@@ -43,7 +43,7 @@ const authorization = (userName, password) => {
 const whoAmI = () => {
     handleError(() => {
         if (userStatus.isLoggedIn) {
-            console.log(`User "${userStatus.userInfo.userName}" is active`);
+            alert(`User "${userStatus.userInfo.userName}" is active`);
         }
         else {
             throw new Error('No active user');
@@ -54,7 +54,7 @@ const logOut = () => {
     handleError(() => {
         if (userStatus.isLoggedIn) {
             userStatus = { isLoggedIn: false, userInfo: {} };
-            console.log(`User "${userStatus.userInfo.userName}" is deactivated`);
+            alert(`User "${userStatus.userInfo.userName}" is deactivated`);
         }
         else {
             throw new Error('No active user');

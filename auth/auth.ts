@@ -76,9 +76,9 @@ const logOut = (): void => {
     });
 };
 
-export const authVar = {
+export const authFunc = {
     registration,
     logOut,
     whoAmI,
     authorization,
-};
+}

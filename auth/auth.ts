@@ -3,8 +3,8 @@ interface IUser {
     readonly password: string;
 }
 interface ILogged {
-    isLoggedIn: boolean;
-    userInfo: Partial<IUser>;
+    readonly isLoggedIn: boolean;
+    readonly userInfo: Partial<IUser>;
 }
 
 let userStatus: ILogged = { isLoggedIn: false, userInfo: {} };
@@ -68,11 +68,11 @@ const whoAmI = (): void => {
 const logOut = (): void => {
     handleError(() => {
         if (userStatus.isLoggedIn) {
-        userStatus = { isLoggedIn: false, userInfo: {} };
-        document.write(`User "${userStatus.userInfo.userName}" is deactivated`);
+        document.write(`User "${userStatus.userInfo.userName}"eadonly is deactivated`);
         } else {
             throw new Error('No active user');
         }
+        userStatus = { isLoggedIn: false, userInfo: {} };
     });
 };
 

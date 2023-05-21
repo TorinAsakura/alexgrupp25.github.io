@@ -53,11 +53,17 @@ const whoAmI = () => {
 const logOut = () => {
     handleError(() => {
         if (userStatus.isLoggedIn) {
-            userStatus = { isLoggedIn: false, userInfo: {} };
-            document.write(`User "${userStatus.userInfo.userName}" is deactivated`);
+            document.write(`User "${userStatus.userInfo.userName}"eadonly is deactivated`);
         }
         else {
             throw new Error('No active user');
         }
+        userStatus = { isLoggedIn: false, userInfo: {} };
     });
+};
+export const authVar = {
+    registration,
+    logOut,
+    whoAmI,
+    authorization,
 };

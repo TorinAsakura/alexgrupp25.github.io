@@ -15,7 +15,7 @@ const handleError = (callback: () => void): void => {
     try {
         callback();
     } catch (error: any) {
-        console.log(error.message);
+        alert(error.message);
     }
 };
 
@@ -35,7 +35,7 @@ const registration = (userName: string, password: string): void => {
         }
         const regUser: IUser = { userName, password };
         credentials.push(regUser);
-        console.log(`User with nickname "${userName}" was created`);
+        alert(`User with nickname "${userName}" was created`);
     });
 };
 
@@ -51,7 +51,7 @@ const authorization = (userName: string, password: string): void => {
             throw new Error('Username or password is incorrect');
         }
         userStatus = { isLoggedIn: true, userInfo: { userName } };
-        console.log(`Greeting "${userName}"`);
+        alert(`Greeting "${userName}"`);
     });
 };
 

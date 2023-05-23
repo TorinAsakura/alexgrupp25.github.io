@@ -9,7 +9,7 @@ const handleError = (callback: () => void): void => {
     try {
         callback();
     } catch (error: any) {
-        console.log(error.message);
+        console.error(error.message);
     }
 };
 

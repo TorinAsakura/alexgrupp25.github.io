@@ -13,6 +13,12 @@ const handleError = (callback: () => void): void => {
     }
 };
 
+const checkLoggedIn = (): void => {
+    if (!userStatus.isLoggedIn) {
+        throw new Error('No active user');
+    }
+};
+
 const registration = (userName: string, password: string): void => {
     handleError(() => {
         if (userStatus.isLoggedIn) {
@@ -51,21 +57,15 @@ const authorization = (userName: string, password: string): void => {
 
 const whoAmI = (): void => {
     handleError(() => {
-    if (userStatus.isLoggedIn) {
+        checkLoggedIn();
         console.log(`User "${userStatus.userInfo.userName}" is active`);
-    } else {
-        throw new Error('No active user');
-    }
     });
 };
 
 const logOut = (): void => {
     handleError(() => {
-        if (userStatus.isLoggedIn) {
+        checkLoggedIn();
         console.log(`User "${userStatus.userInfo.userName}" is deactivated`);
-        } else {
-            throw new Error('No active user');
-        }
         userStatus = { isLoggedIn: false, userInfo: {} };
     });
 };

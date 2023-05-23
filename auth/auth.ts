@@ -1,15 +1,9 @@
-interface IUser {
-    readonly userName: string;
-    readonly password: string;
-}
-interface ILogged {
-    readonly isLoggedIn: boolean;
-    readonly userInfo: Partial<IUser>;
-}
+/* eslint no-console: 0 */  // --> off console.log errors
+import { User, LoggedUser } from './interfaces';
 
-let userStatus: ILogged = { isLoggedIn: false, userInfo: {} };
+let userStatus: LoggedUser = { isLoggedIn: false, userInfo: {} };
 
-const credentials: IUser[] = [];
+const credentials: User[] = [];
 
 const handleError = (callback: () => void): void => {
     try {
@@ -33,7 +27,7 @@ const registration = (userName: string, password: string): void => {
         if (credentials.some((user) => user.userName === userName)) {
             throw new Error('This username already exists');
         }
-        const regUser: IUser = { userName, password };
+        const regUser: User = { userName, password };
         credentials.push(regUser);
         document.write(`User with nickname "${userName}" was created`);
     });
@@ -68,7 +62,7 @@ const whoAmI = (): void => {
 const logOut = (): void => {
     handleError(() => {
         if (userStatus.isLoggedIn) {
-        document.write(`User "${userStatus.userInfo.userName}"eadonly is deactivated`);
+        document.write(`User "${userStatus.userInfo.userName}" is deactivated`);
         } else {
             throw new Error('No active user');
         }
@@ -81,4 +75,4 @@ export const authFunc = {
     logOut,
     whoAmI,
     authorization,
-}
+};

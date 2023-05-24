@@ -4,18 +4,12 @@ import { User, LoggedUser } from './AuthModule/interfaces';
 import { createUser, registerUser } from './AuthModule/registrationModule';
 import { authenticateUser, setLoggedInStatus } from './AuthModule/authorizatiionModule';
 import { checkNoActiveSession, checkActiveSession } from './AuthModule/chekSessionModule';
+import { handleError } from './handleError';
 
 let userStatus: LoggedUser = { isLoggedIn: false, userInfo: {} };
 
 const credentials: User[] = [];
 
-const handleError = (callback: () => void): void => {
-    try {
-        callback();
-    } catch (error: any) {
-        console.error(error.message);
-    }
-};
 const registration = (userName: string, password: string): void => {
     handleError(() => {
         checkActiveSession();

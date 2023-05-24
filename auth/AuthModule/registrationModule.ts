@@ -1,10 +1,9 @@
 import {authFunc} from "../auth";
-import {User} from './interfaces';
-
-const {credentials} = authFunc
-
+import {User} from '../interfaces';
 
 export const createUser = (userName: string, password: string): User => {
+    const {credentials} = authFunc
+
     if (userName.length < 5) {
         throw new Error('Username must be at least 5 characters');
     }
@@ -19,6 +18,8 @@ export const createUser = (userName: string, password: string): User => {
 };
 
 export const registerUser = (user: User): void => {
+
+    const {credentials} = authFunc
     credentials.push(user);
     console.log(`User with nickname "${user.userName}" was created`);
 };

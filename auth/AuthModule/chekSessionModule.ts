@@ -1,15 +1,13 @@
-import {authFunc} from "../auth";
+import { LoggedUser } from "../interfaces";
 
-let {userStatus} = authFunc;
-
-export const checkNoActiveSession = (): void => {
-    if (!userStatus.isLoggedIn) {
+export const checkNoActiveSession = (userStatusObj:LoggedUser): void => {
+    if (!userStatusObj.isLoggedIn) {
         throw new Error('No active user');
     }
 };
 
-export const checkActiveSession = (): void => {
-    if (userStatus.isLoggedIn) {
+export const checkActiveSession = (userStatusObj:LoggedUser): void => {
+    if (userStatusObj.isLoggedIn) {
         throw new Error('You have an active session');
     }
 };

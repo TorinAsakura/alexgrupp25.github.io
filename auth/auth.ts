@@ -1,10 +1,10 @@
 /* eslint no-console: 0 */  // --> off console.log errors
 
-import { User, LoggedUser } from './AuthModule/interfaces';
+import { User, LoggedUser } from './interfaces';
 import { createUser, registerUser } from './AuthModule/registrationModule';
 import { authenticateUser, setLoggedInStatus } from './AuthModule/authorizatiionModule';
 import { checkNoActiveSession, checkActiveSession } from './AuthModule/chekSessionModule';
-import { handleError } from './handleError';
+import { handleError } from './helperError/handleError';
 
 let userStatus: LoggedUser = { isLoggedIn: false, userInfo: {} };
 
@@ -12,33 +12,33 @@ const credentials: User[] = [];
 
 const registration = (userName: string, password: string): void => {
     handleError(() => {
-        checkActiveSession();
+        checkActiveSession(userStatus);
         const newUser = createUser(userName, password);
         registerUser(newUser);
     });
 };
 
-const authorization = (userName: string, password: string): void => {
+const authorization = (userName: string, password: string, userStatusObj:LoggedUser): void => {
     handleError(() => {
-        checkActiveSession();
+        checkActiveSession(userStatusObj);
         if (!authenticateUser(userName, password)) {
             throw new Error('Username or password is incorrect');
         }
-        setLoggedInStatus(userName);
+        setLoggedInStatus(userName, userStatusObj);
         console.log(`Greeting "${userName}"`);
     });
 };
 
 const whoAmI = (): void => {
     handleError(() => {
-        checkNoActiveSession();
+        checkNoActiveSession(userStatus);
         console.log(`User "${userStatus.userInfo.userName}" is active`);
     });
 };
 
 const logOut = (): void => {
     handleError(() => {
-        checkNoActiveSession();
+        checkNoActiveSession(userStatus);
         console.log(`User "${userStatus.userInfo.userName}" is deactivated`);
         userStatus = { isLoggedIn: false, userInfo: {} };
     });

@@ -1,4 +1,4 @@
-import {authFunc} from "./auth";
+import {authFunc} from "../auth";
 
 let {userStatus} = authFunc;
 

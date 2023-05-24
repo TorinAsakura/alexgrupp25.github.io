@@ -1,4 +1,4 @@
-import {authFunc} from "./auth";
+import {authFunc} from "../auth";
 
 const {credentials} = authFunc;
 let {userStatus} = authFunc;

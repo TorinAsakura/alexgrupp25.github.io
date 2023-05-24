@@ -12,13 +12,13 @@ const handleError = (callback: () => void): void => {
     }
 };
 
-const checNoActiveSession = (): void => {
+const checkNoActiveSession = (): void => {
     if (!userStatus.isLoggedIn) {
         throw new Error('No active user');
     }
 };
 
-const activeSession = (): void => {
+const checkactiveSession = (): void => {
     if (userStatus.isLoggedIn) {
         throw new Error('You have an active session');
     }
@@ -53,7 +53,7 @@ const setLoggedInStatus = (userName: string): void => {
 
 const registration = (userName: string, password: string): void => {
     handleError(() => {
-        activeSession();
+        checkactiveSession();
         const newUser = createUser(userName, password);
         registerUser(newUser);
     });
@@ -61,7 +61,7 @@ const registration = (userName: string, password: string): void => {
 
 const authorization = (userName: string, password: string): void => {
     handleError(() => {
-        activeSession();
+        checkactiveSession();
         if (!authenticateUser(userName, password)) {
             throw new Error('Username or password is incorrect');
         }
@@ -72,14 +72,14 @@ const authorization = (userName: string, password: string): void => {
 
 const whoAmI = (): void => {
     handleError(() => {
-        checNoActiveSession();
+        checkNoActiveSession();
         console.log(`User "${userStatus.userInfo.userName}" is active`);
     });
 };
 
 const logOut = (): void => {
     handleError(() => {
-        checNoActiveSession();
+        checkNoActiveSession();
         console.log(`User "${userStatus.userInfo.userName}" is deactivated`);
         userStatus = { isLoggedIn: false, userInfo: {} };
     });

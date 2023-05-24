@@ -1,4 +1,9 @@
+/* eslint no-console: 0 */  // --> off console.log errors
+
 import { User, LoggedUser } from './interfaces';
+import { createUser, registerUser } from './registrationModule';
+import { authenticateUser, setLoggedInStatus } from './authorizatiionModule';
+import { checkNoActiveSession, checkActiveSession } from './chekSessionModule';
 
 let userStatus: LoggedUser = { isLoggedIn: false, userInfo: {} };
 
@@ -11,49 +16,9 @@ const handleError = (callback: () => void): void => {
         console.error(error.message);
     }
 };
-
-const checkNoActiveSession = (): void => {
-    if (!userStatus.isLoggedIn) {
-        throw new Error('No active user');
-    }
-};
-
-const checkactiveSession = (): void => {
-    if (userStatus.isLoggedIn) {
-        throw new Error('You have an active session');
-    }
-};
-
-const createUser = (userName: string, password: string): User => {
-    if (userName.length < 5) {
-        throw new Error('Username must be at least 5 characters');
-    }
-    if (password.length < 6) {
-        throw new Error('Password must be at least 6 characters');
-    }
-    if (credentials.some((user) => user.userName === userName)) {
-        throw new Error('This username already exists');
-    }
-    const regUser: User = { userName, password };
-    return regUser;
-};
-
-const registerUser = (user: User): void => {
-    credentials.push(user);
-    console.log(`User with nickname "${user.userName}" was created`);
-};
-
-const authenticateUser = (userName: string, password: string): boolean => {
-    return credentials.some((user) => user.userName === userName && user.password === password);
-};
-
-const setLoggedInStatus = (userName: string): void => {
-    userStatus = { isLoggedIn: true, userInfo: { userName } };
-};
-
 const registration = (userName: string, password: string): void => {
     handleError(() => {
-        checkactiveSession();
+        checkActiveSession();
         const newUser = createUser(userName, password);
         registerUser(newUser);
     });
@@ -61,7 +26,7 @@ const registration = (userName: string, password: string): void => {
 
 const authorization = (userName: string, password: string): void => {
     handleError(() => {
-        checkactiveSession();
+        checkActiveSession();
         if (!authenticateUser(userName, password)) {
             throw new Error('Username or password is incorrect');
         }
@@ -90,4 +55,6 @@ export const authFunc = {
     logOut,
     whoAmI,
     authorization,
+    userStatus,
+    credentials
 };

@@ -6,7 +6,7 @@ export const authenticateUser = (userName: string, password: string): boolean =>
     return credentials.some((user) => user.userName === userName && user.password === password);
 };
 export const setLoggedInStatus = (userName: string, userStatusObj: LoggedUser): void => {
-    const updatedUserStatus = { ...userStatusObj };
+    const updatedUserStatus = userStatusObj;
     updatedUserStatus.isLoggedIn = true;
     updatedUserStatus.userInfo.userName = userName;
 };

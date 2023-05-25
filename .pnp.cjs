@@ -30,11 +30,13 @@ const RAW_RUNTIME_STATE =
           ["@atls/config-jest", "npm:0.0.5"],\
           ["@atls/schematics", "npm:0.0.13"],\
           ["@jest/core", "virtual:e82efaeb5dbad3cc20561562a12571d1e6ab3b0e3e16ee76fe3fbc78f117981828ff47b8e7cf32973a7efbf625114ac6c926b7c54a2ddba69de3de5d64ffe7f6#npm:29.5.0"],\
+          ["@types/bcryptjs", "npm:2.4.2"],\
           ["@types/eslint", "npm:8.37.0"],\
-          ["@types/node", "npm:20.1.3"],\
+          ["@types/node", "npm:20.2.3"],\
+          ["bcryptjs", "npm:2.4.3"],\
           ["eslint", "npm:8.18.0"],\
           ["husky", "npm:8.0.3"],\
-          ["typescript", "patch:typescript@npm%3A5.0.4#optional!builtin<compat/typescript>::version=5.0.4&hash=ad5954"]\
+          ["typescript", "patch:typescript@npm%3A4.9.5#optional!builtin<compat/typescript>::version=4.9.5&hash=ad5954"]\
         ],\
         "linkType": "SOFT"\
       }]\
@@ -1923,6 +1925,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@types/bcryptjs", [\
+      ["npm:2.4.2", {\
+        "packageLocation": "../../.yarn/berry/cache/@types-bcryptjs-npm-2.4.2-3a0c115732-9.zip/node_modules/@types/bcryptjs/",\
+        "packageDependencies": [\
+          ["@types/bcryptjs", "npm:2.4.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@types/cacheable-request", [\
       ["npm:6.0.2", {\
         "packageLocation": "../../.yarn/berry/cache/@types-cacheable-request-npm-6.0.2-894b6992d5-9.zip/node_modules/@types/cacheable-request/",\
@@ -2067,10 +2078,10 @@ const RAW_RUNTIME_STATE =
         ],\
         "linkType": "HARD"\
       }],\
-      ["npm:20.1.3", {\
-        "packageLocation": "../../.yarn/berry/cache/@types-node-npm-20.1.3-41726fb18f-9.zip/node_modules/@types/node/",\
+      ["npm:20.2.3", {\
+        "packageLocation": "../../.yarn/berry/cache/@types-node-npm-20.2.3-0289426dd1-9.zip/node_modules/@types/node/",\
         "packageDependencies": [\
-          ["@types/node", "npm:20.1.3"]\
+          ["@types/node", "npm:20.2.3"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -3771,6 +3782,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../.yarn/berry/cache/base64-js-npm-1.5.1-b2f7275641-9.zip/node_modules/base64-js/",\
         "packageDependencies": [\
           ["base64-js", "npm:1.5.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["bcryptjs", [\
+      ["npm:2.4.3", {\
+        "packageLocation": "../../.yarn/berry/cache/bcryptjs-npm-2.4.3-32de4957eb-9.zip/node_modules/bcryptjs/",\
+        "packageDependencies": [\
+          ["bcryptjs", "npm:2.4.3"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -7967,11 +7987,13 @@ const RAW_RUNTIME_STATE =
           ["@atls/config-jest", "npm:0.0.5"],\
           ["@atls/schematics", "npm:0.0.13"],\
           ["@jest/core", "virtual:e82efaeb5dbad3cc20561562a12571d1e6ab3b0e3e16ee76fe3fbc78f117981828ff47b8e7cf32973a7efbf625114ac6c926b7c54a2ddba69de3de5d64ffe7f6#npm:29.5.0"],\
+          ["@types/bcryptjs", "npm:2.4.2"],\
           ["@types/eslint", "npm:8.37.0"],\
-          ["@types/node", "npm:20.1.3"],\
+          ["@types/node", "npm:20.2.3"],\
+          ["bcryptjs", "npm:2.4.3"],\
           ["eslint", "npm:8.18.0"],\
           ["husky", "npm:8.0.3"],\
-          ["typescript", "patch:typescript@npm%3A5.0.4#optional!builtin<compat/typescript>::version=5.0.4&hash=ad5954"]\
+          ["typescript", "patch:typescript@npm%3A4.9.5#optional!builtin<compat/typescript>::version=4.9.5&hash=ad5954"]\
         ],\
         "linkType": "SOFT"\
       }]\
@@ -8281,13 +8303,6 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../.yarn/berry/cache/typescript-patch-503813fb14-9.zip/node_modules/typescript/",\
         "packageDependencies": [\
           ["typescript", "patch:typescript@npm%3A4.9.5#optional!builtin<compat/typescript>::version=4.9.5&hash=ad5954"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
-      ["patch:typescript@npm%3A5.0.4#optional!builtin<compat/typescript>::version=5.0.4&hash=ad5954", {\
-        "packageLocation": "../../.yarn/berry/cache/typescript-patch-2be6e6969a-9.zip/node_modules/typescript/",\
-        "packageDependencies": [\
-          ["typescript", "patch:typescript@npm%3A5.0.4#optional!builtin<compat/typescript>::version=5.0.4&hash=ad5954"]\
         ],\
         "linkType": "HARD"\
       }]\

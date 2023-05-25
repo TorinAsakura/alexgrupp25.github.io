@@ -2,6 +2,7 @@
 
 import {authFunc} from "../auth";
 import {User} from '../interfaces';
+import * as bcrypt from 'bcryptjs'
 
 export const createUser = (userName: string, password: string): User => {
     const {credentials} = authFunc
@@ -15,7 +16,10 @@ export const createUser = (userName: string, password: string): User => {
     if (credentials.some((user) => user.userName === userName)) {
         throw new Error('This username already exists');
     }
-    const regUser: User = { userName, password };
+
+    const hashedPassword: string = bcrypt.hashSync(password, 10);
+
+    const regUser: User = { userName, password: hashedPassword };
     return regUser;
 };
 

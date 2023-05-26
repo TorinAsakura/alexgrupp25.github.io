@@ -4,7 +4,8 @@
   "license": "BSD 3-Clause",
   "scripts": {
     "postpack": "tsc --project tsconfig.json",
-    "start": "node js/tests/tests.js"
+    "start": "node js/tests/tests.js",
+    "test": "jest"
   },
   "devDependencies": {
     "@atls/code-service": "^0.0.18",

@@ -1,3 +1,4 @@
+/* eslint no-console: 0 */  // --> off console.log errors
 import { authFunc } from "../auth";
 
 const {registration,

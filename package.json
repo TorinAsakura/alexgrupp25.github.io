@@ -3,8 +3,8 @@
   "private": true,
   "license": "BSD 3-Clause",
   "scripts": {
-    "postpack": "tsc",
-    "start": "node auth/scripts/tests.js"
+    "postpack": "tsc --project tsconfig.json",
+    "start": "node js/test/tests.js"
   },
   "devDependencies": {
     "@atls/code-service": "^0.0.18",

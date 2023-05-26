@@ -2,7 +2,7 @@
 
 import {authFunc} from "../auth";
 import {User} from '../interfaces';
-import * as bcrypt from 'bcryptjs'
+import * as bcrypt from 'bcrypt'
 
 export const createUser = (userName: string, password: string): User => {
     const {credentials} = authFunc

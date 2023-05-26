@@ -1,6 +1,6 @@
 import {authFunc} from "../auth";
 import { LoggedUser } from "../interfaces";
-import * as bcrypt from 'bcrypt'
+import bcrypt from 'bcrypt'
 
 export const authenticateUser = (userName: string, password: string): boolean => {
     const { credentials } = authFunc;

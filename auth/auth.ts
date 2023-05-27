@@ -18,27 +18,27 @@ const registration = async (userName: string, password: string): Promise<void> =
     });
 };
 
-const authorization = (userName: string, password: string, userStatusObj:LoggedUser): void => {
-    handleError(() => {
+const authorization = async (userName: string, password: string, userStatusObj:LoggedUser): Promise<void> => {
+    await handleError(async () => {
         checkActiveSession(userStatusObj);
-        if (!authenticateUser(userName, password)) {
+        if (!await authenticateUser(userName, password)) {
             throw new Error('Username or password is incorrect');
         }
-        setLoggedInStatus(userName, userStatusObj);
+        await setLoggedInStatus(userName, userStatusObj);
         console.log(`Greeting "${userName}"`);
     });
 };
 
 const whoAmI = (): void => {
-    handleError(() => {
-        checkNoActiveSession(userStatus);
+    handleError(async () => {
+        await checkNoActiveSession(userStatus);
         console.log(`User "${userStatus.userInfo.userName}" is active`);
     });
 };
 
 const logOut = (): void => {
-    handleError(() => {
-        checkNoActiveSession(userStatus);
+    handleError(async () => {
+        await checkNoActiveSession(userStatus);
         console.log(`User "${userStatus.userInfo.userName}" is deactivated`);
         userStatus = { isLoggedIn: false, userInfo: {} };
     });

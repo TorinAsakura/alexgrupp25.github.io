@@ -1,7 +1,6 @@
 export interface User {
     userName: string;
-    password: string;
-    
+    password: string; 
 }
 export interface LoggedUser {
     isLoggedIn: boolean;

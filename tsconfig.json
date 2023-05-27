@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "declaration": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": false,
+    "isolatedModules": false,
+    "resolveJsonModule": true,
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": false,
+    "noImplicitReturns": false,
+    "noImplicitThis": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "pretty": true,
+    "removeComments": true,
+    "strict": true,
+    "sourceMap": false,
+    "target": "es2022",
+    "rootDir": "./auth",
+    "outDir": "./js"
+  },
+  "include": ["./auth/**/*"]
+}

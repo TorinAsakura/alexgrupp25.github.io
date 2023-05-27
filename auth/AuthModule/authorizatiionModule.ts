@@ -6,7 +6,7 @@ export const authenticateUser = async (userName: string, password: string): Prom
     const { credentials } = authFunc;
     const foundUser = credentials.find((user) => user.userName === userName);
     if (foundUser) {
-        return await bcrypt.compare(password, foundUser.password);
+        return bcrypt.compare(password, foundUser.password);
     }
     return false;
 };

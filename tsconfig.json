@@ -6,7 +6,7 @@
     "importHelpers": false,
     "isolatedModules": false,
     "resolveJsonModule": true,
-    "module": "commonjs",
+    "module": "CommonJS",
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": false,

@@ -11,10 +11,10 @@ let userStatus: LoggedUser = { isLoggedIn: false, userInfo: {} };
 const credentials: User[] = [];
 
 const registration = async (userName: string, password: string): Promise<void> => {
-    handleError(async () => {
+    await handleError(async () => {
         checkActiveSession(userStatus);
         const newUser = await createUser(userName, password);
-        registerUser(newUser);
+        await registerUser(newUser);
     });
 };
 

@@ -4,7 +4,7 @@
   "license": "BSD 3-Clause",
   "scripts": {
     "postpack": "tsc --project tsconfig.json",
-    "start": "node js/auth.js",
+    "start": "node --experimental-modules js/auth.js",
     "test": "jest"
   },
   "devDependencies": {

@@ -8,8 +8,8 @@ describe('authenticateUser', () => {
         { username: 'SarraConnor', password: bcrypt.hashSync('654321', 10) },
     ];
     credential.forEach(testUser => {
-        it(`should return true if userName & password is correct ${testUser.username} ${testUser.password}`, () => {
-            const result = authenticateUser(testUser.username, testUser.password);
+        it(`should return true if userName & password is correct ${testUser.username} ${testUser.password}`, async () => {
+            const result = await authenticateUser(testUser.username, testUser.password);
             expect(result).toBe(true);
         });
     });

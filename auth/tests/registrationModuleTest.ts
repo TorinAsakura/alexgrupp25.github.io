@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt'
-import {createUser, registerUser} from '../AuthModule/registrationModule'
+import {createUser, registerUser} from '../authModule/registrationModule'
 import { authFunc } from '../auth';
 
 describe('createUser', () => {

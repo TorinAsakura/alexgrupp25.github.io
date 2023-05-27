@@ -1,4 +1,4 @@
-import {authFunc} from "../auth";
+import { authFunc } from "../auth";
 import { LoggedUser } from "../interfaces";
 import bcrypt from 'bcrypt'
 

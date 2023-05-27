@@ -1,4 +1,4 @@
-import { checkActiveSession, checkNoActiveSession } from "../AuthModule/checkSessionModule";
+import { checkActiveSession, checkNoActiveSession } from "../authModule/checkSessionModule";
 
 describe('checkNoActiveSession', () => {
     it('should throw an error if user is not logged in', async() => {

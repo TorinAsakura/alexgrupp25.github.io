@@ -1,8 +1,9 @@
-import { authenticateUser, setLoggedInStatus } from '../AuthModule/authorizatiionModule';
+import { authenticateUser, setLoggedInStatus } from '../authModule/authorizatiionModule';
 
 
 jest.mock('../auth', () => {
     const bcrypt = require('bcrypt');
+    
     return {
         authFunc: {
             ...jest.requireActual('../auth').authFunc,

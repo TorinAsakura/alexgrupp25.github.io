@@ -3,12 +3,11 @@ import {createUser, registerUser} from '../AuthModule/registrationModule'
 import { authFunc } from '../auth';
 
 describe('createUser', () => {
-
-    it('should create a new user if input is valid', () => {
+    it('should create a new user if input is valid', async () => {
         const userName = 'JohnDoe';
         const password = 'password123';
-        
-        const result = createUser(userName, password);
+
+        const result = await createUser(userName, password);
 
         expect(result).toEqual({
             userName: 'JohnDoe',
@@ -16,36 +15,32 @@ describe('createUser', () => {
         });
     });
 
-    it('should throw an error if username is less than 5 characters', () => {
+    it('should throw an error if username is less than 5 characters', async () => {
         const userName = 'John';
         const password = 'password123';
 
-        expect(() => {
-            createUser(userName, password);
-        }).toThrow('Username must be at least 5 characters');
+        await expect(createUser(userName, password)).rejects.toThrow('Username must be at least 5 characters');
     });
 
-    it('should throw an error if password is less than 6 characters', () => {
+    it('should throw an error if password is less than 6 characters', async () => {
         const userName = 'JohnDoe';
         const password = 'pass';
 
-        expect(() => {
-            createUser(userName, password);
-        }).toThrow('Password must be at least 6 characters');
+        await expect(createUser(userName, password)).rejects.toThrow('Password must be at least 6 characters');
     });
 
-    it('should throw an error if username already exists', () => {
+    it('should throw an error if username already exists', async () => {
         const userName = 'JohnDoe';
         const password = 'password123';
 
         authFunc.credentials.push({
             userName: 'JohnDoe',
             password: bcrypt.hashSync('otherpassword', 10)
-    });
+        });
 
-    expect(() => {
-        createUser(userName, password);
-    }).toThrow('This username already exists');
+        await expect(createUser(userName, password))
+        .rejects
+        .toThrow('This username already exists');
     });
 });
 

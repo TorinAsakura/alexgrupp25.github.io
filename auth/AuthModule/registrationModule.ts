@@ -4,8 +4,8 @@ import {authFunc} from "../auth";
 import {User} from '../interfaces';
 import * as bcrypt from 'bcrypt'
 
-export const createUser = (userName: string, password: string): User => {
-    const {credentials} = authFunc
+export const createUser = async (userName: string, password: string): Promise<User> => {
+    const { credentials } = authFunc;
 
     if (userName.length < 5) {
         throw new Error('Username must be at least 5 characters');
@@ -17,7 +17,7 @@ export const createUser = (userName: string, password: string): User => {
         throw new Error('This username already exists');
     }
 
-    const hashedPassword: string = bcrypt.hashSync(password, 10);
+    const hashedPassword: string = await bcrypt.hash(password, 10);
 
     const regUser: User = { userName, password: hashedPassword };
     return regUser;

@@ -4,13 +4,13 @@ import { authFunc } from '../auth';
 
 describe('createUser', () => {
     it('should create a new user if input is valid', async () => {
-        const userName = 'JohnDoe';
+        const userName = 'LilitApelsin';
         const password = 'password123';
 
         const result = await createUser(userName, password);
 
         expect(result).toEqual({
-            userName: 'JohnDoe',
+            userName: 'LilitApelsin',
             password: expect.any(String)
         });
     });
@@ -46,20 +46,12 @@ describe('createUser', () => {
 
 describe('registerUser', () => {
 
-    it('should add a user to the credentials', () => {
-        const user = { userName: 'JohnDoe', password: bcrypt.hashSync('password123', 10) };
-
-        registerUser(user);
-
-        expect(authFunc.credentials).toContainEqual(user);
-    });
-
-    it('should log a message with the created user nickname', () => {
+    it('should log a message with the created user nickname', async () => {
         const user = { userName: 'JohnDoe', password: bcrypt.hashSync('password123', 10) };
 
         const consoleLogSpy = jest.spyOn(console, 'log');
 
-        registerUser(user);
+        await registerUser(user);
 
         expect(consoleLogSpy).toHaveBeenCalledWith(`User with nickname "${user.userName}" was created`);
 

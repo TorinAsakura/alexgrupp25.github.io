@@ -27,10 +27,9 @@ export const createUser = async (userName: string, password: string): Promise<Us
     return regUser;
 };
 
-export const registerUser = async (user: User): Promise<void> => {
-    return new Promise((resolve) => {
+export const registerUser = async (user: User): Promise<void> =>
+    new Promise((resolve) => {
         authFunc.credentials.push(user);
         console.log(`User with nickname "${user.userName}" was created`);
         resolve();
     });
-};

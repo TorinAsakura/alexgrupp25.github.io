@@ -2,7 +2,7 @@
 
 import { User, LoggedUser } from './interfaces';
 import { createUser, registerUser } from './authModule/registrationModule';
-import { authenticateUser, setLoggedInStatus } from './authModule/authorizatiionModule';
+import { authenticateUser, setLoggedInStatus } from './authModule/authorizationModule';
 import { checkNoActiveSession, checkActiveSession } from './authModule/checkSessionModule';
 import { handleError } from './helperError/handleError';
 

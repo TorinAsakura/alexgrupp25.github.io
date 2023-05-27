@@ -1,4 +1,4 @@
-import { authenticateUser, setLoggedInStatus } from '../authModule/authorizatiionModule';
+import { authenticateUser, setLoggedInStatus } from '../authModule/authorizationModule';
 
 
 jest.mock('../auth', () => {

@@ -16,6 +16,12 @@ export const createUser = async (userName: string, password: string): Promise<Us
     if (credentials.some((user) => user.userName === userName)) {
         throw new Error('This username already exists');
     }
+    if (!userName || userName.trim() === '') {
+        throw new Error ('User name is required');
+    }
+    if (!password || password.trim() === '') {
+        throw new Error ('Password is required')
+    }
 
     const hashedPassword: string = await bcrypt.hash(password, 10);
 

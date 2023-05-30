@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import {createUser, registerUser} from '../authModule/registrationModule'
 import { authFunc } from '..';
 

@@ -1,0 +1,17 @@
+{
+  "name": "auth",
+  "version": "0.0.1",
+  "private": true,
+  "license": "BSD-3-Clause",
+  "main": "src/index.ts",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "build": "yarn service build",
+    "dev": "yarn service dev",
+    "start": "node dist/index.js"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "bcryptjs": "^2.4.3"
+  }
+}

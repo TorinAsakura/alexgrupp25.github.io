@@ -1,8 +1,8 @@
 /* eslint no-console: 0 */  // --> off console.log errors
 
-import { authFunc } from '../src/auth';
+import { authFunc } from '../index';
 import {User} from '../interfaces';
-import * as bcrypt from 'bcrypt'
+import * as bcrypt from 'bcryptjs'
 
 export const createUser = async (userName: string, password: string): Promise<User> => {
     if (userName.length < 5) {

@@ -1,12 +1,12 @@
 import { authenticateUser, setLoggedInStatus } from '../authModule/authorizationModule';
 
 
-jest.mock('../auth', () => {
-    const bcrypt = require('bcrypt');
+jest.mock('../', () => {
+    const bcrypt = require('bcryptjs');
     
     return {
         authFunc: {
-            ...jest.requireActual('../auth').authFunc,
+            ...jest.requireActual('../').authFunc,
             credentials: [
                 { userName: 'JohnDoe', password: bcrypt.hashSync('123456', 10) },
                 { userName: 'SarraConnor', password: bcrypt.hashSync('654321', 10) },

@@ -1,4 +1,3 @@
-
-import "./authorizationModuleTest";
-import "./registrationModuleTest";
-import "./checkSessionModuleTest";
+import './authorizationModuleTest'
+import './registrationModuleTest'
+import './checkSessionModuleTest'

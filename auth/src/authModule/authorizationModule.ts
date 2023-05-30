@@ -1,6 +1,6 @@
 import { authFunc } from "../index"
 import { LoggedUser } from "../interfaces";
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 
 export const authenticateUser = async (userName: string, password: string): Promise<boolean> => {
     const { credentials } = authFunc;

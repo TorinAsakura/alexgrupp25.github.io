@@ -2,8 +2,8 @@
 
 import * as bcrypt  from 'bcryptjs'
 
-import { User }      from '../interfaces'
-import { authFunc } from '../index'
+import { User }     from './interfaces'
+import { authFunc } from './index'
 
 export const createUser = async (userName: string, password: string): Promise<User> => {
   if (userName.length < 5) {

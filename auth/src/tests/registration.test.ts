@@ -1,9 +1,8 @@
-import bcrypt                      from 'bcryptjs'
+import bcrypt           from 'bcryptjs'
 
-import { authFunc }                from '..'
-import { createUser }               from '../authModule/registrationModule'
-
-import { registerUser } from '../authModule/registrationModule'
+import { authFunc }     from '..'
+import { createUser }   from '../registrationModule'
+import { registerUser } from '../registrationModule'
 
 describe('createUser', () => {
   it('should create a new user if input is valid', async () => {

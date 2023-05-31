@@ -1,4 +1,4 @@
-import { LoggedUser } from '../interfaces'
+import { LoggedUser } from './interfaces'
 
 export const checkNoActiveSession = async (userStatusObj: LoggedUser): Promise<void> => {
   if (!userStatusObj.isLoggedIn) {

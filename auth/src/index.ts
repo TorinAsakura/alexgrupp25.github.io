@@ -1,14 +1,14 @@
 /* eslint no-console: 0 */ // --> off console.log errors
 
-import { LoggedUser }                               from './interfaces'
-import { User }                         from './interfaces'
-import { authenticateUser }                         from './authModule/authorizationModule'
-import { setLoggedInStatus }      from './authModule/authorizationModule'
-import { checkActiveSession }                       from './authModule/checkSessionModule'
-import { checkNoActiveSession } from './authModule/checkSessionModule'
-import { createUser }                               from './authModule/registrationModule'
-import { registerUser }                 from './authModule/registrationModule'
-import { handleError }                              from './helperError/handleError'
+import { LoggedUser }           from './interfaces'
+import { User }                 from './interfaces'
+import { authenticateUser }     from './authorizationModule'
+import { setLoggedInStatus }    from './authorizationModule'
+import { checkActiveSession }   from './checkSessionModule'
+import { checkNoActiveSession } from './checkSessionModule'
+import { handleError }          from './helperError/handleError'
+import { createUser }           from './registrationModule'
+import { registerUser }         from './registrationModule'
 
 let userStatus: LoggedUser = { isLoggedIn: false, userInfo: {} }
 
